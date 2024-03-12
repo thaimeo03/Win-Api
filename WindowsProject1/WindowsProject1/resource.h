@@ -37,6 +37,12 @@
 #define ID_HINHHOCD_THOAT32794          32794
 #define ID_HINHHOCD_TAMGIACVUONG        32795
 #define ID_HINHHOC_HINHCHORD            32798
+#define ID_HINHHOC_HINHNGUGIAC          32799
+#define ID_HINHHOC_HINHTRON             32800
+#define ID_MAUSAC_KIEUVIEN              32801
+#define ID_KIEUVIEN_SOLID               32802
+#define ID_KIEUVIEN_DOT                 32803
+#define ID_KIEUVIEN_DASH                32804
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
@@ -45,7 +51,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32799
+#define _APS_NEXT_COMMAND_VALUE         32805
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110
 #endif

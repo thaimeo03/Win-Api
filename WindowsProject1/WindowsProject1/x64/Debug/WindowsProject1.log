@@ -1,9 +1,11 @@
 ﻿  WindowsProject1.cpp
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(88,49): warning C4302: 'type cast': truncation from 'LPWSTR' to 'WORD'
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(92,52): warning C4302: 'type cast': truncation from 'LPWSTR' to 'WORD'
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(198,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(200,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(204,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(206,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
-E:\__WindowAPI\WindowsProject1\WindowsProject1\WindowsProject1.cpp(417,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  WindowsProject1.vcxproj -> E:\__WindowAPI\WindowsProject1\x64\Debug\WindowsProject1.exe
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(88,49): warning C4302: 'type cast': truncation from 'LPWSTR' to 'WORD'
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(92,52): warning C4302: 'type cast': truncation from 'LPWSTR' to 'WORD'
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(204,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(206,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(210,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(212,19): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(256,25): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(257,24): warning C4244: '=': conversion from 'double' to 'LONG', possible loss of data
+E:\Test\Win-Api\WindowsProject1\WindowsProject1\WindowsProject1.cpp(454,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  WindowsProject1.vcxproj -> E:\Test\Win-Api\WindowsProject1\x64\Debug\WindowsProject1.exe

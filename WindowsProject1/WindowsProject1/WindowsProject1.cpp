@@ -1,4 +1,4 @@
-// WindowsProject1.cpp : Defines the entry point for the application.
+﻿// WindowsProject1.cpp : Defines the entry point for the application.
 //
 
 #include "framework.h"
@@ -140,7 +140,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	HDC hdc = GetDC(hWnd);
 	POINT pt[10];
 
-	static HPEN nicePenWowMuchNice = (HPEN)CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
+	static int currentPenStyle = PS_DOT;
+	static HPEN penStyle;
 
 	static COLORREF
 		aqua = RGB(23, 255, 240),
@@ -148,7 +149,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		green = RGB(0, 255, 0),
 		blue = RGB(0, 0, 255),
 		black = RGB(0, 0, 0),
-		currentColor = black;
+		currentColor = RGB(255, 0, 0);
 	static int currentHatchBrush = -1;
 	static HBRUSH currentBrush = CreateSolidBrush(black);
 
@@ -162,17 +163,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	break;
 	
 	case WM_LBUTTONUP: {
+
 		//		Get Coord
 		xRight = LOWORD(lParam);
 		yBottom = HIWORD(lParam);
 
-		SelectObject(hdc, nicePenWowMuchNice);
+
+
 		if (currentHatchBrush == -1) {
 			DeleteObject(SelectObject(hdc, CreateSolidBrush(currentColor)));
 		}
 		else {
 			DeleteObject(SelectObject(hdc, CreateHatchBrush(currentHatchBrush, currentColor)));
 		}
+
+		penStyle = CreatePen(currentPenStyle, 1, currentColor);
+		SelectObject(hdc, penStyle);
 
 		if (Hinh == ID_HINHHOCD_HINHCHUNHAT) {
 			Rectangle(hdc, xLeft, yTop, xRight, yBottom);
@@ -240,6 +246,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			pt[3].y = yTop;
 			Chord(hdc, pt[0].x, pt[0].y, pt[1].x, pt[1].y, pt[2].x, pt[2].y, pt[3].x, pt[3].y);
 		}
+		else if (Hinh == ID_HINHHOC_HINHNGUGIAC) {
+			POINT points[5];
+			double radius = sqrt(pow(xRight - xLeft, 2) + pow(yBottom - yTop, 2));
+			// Tính toán các góc của đỉnh (72 độ mỗi góc)
+			double angleIncrement = 72 * (3.14 / 180); // Đổi sang radian
+			// Tính toán tọa độ của các đỉnh
+			for (int i = 0; i < 5; ++i) {
+				points[i].x = xLeft + radius * cos(i * angleIncrement);
+				points[i].y = yTop - radius * sin(i * angleIncrement);
+			}
+			Polygon(hdc, points, 5);
+		}
+		else if (Hinh == ID_HINHHOC_HINHTRON) {
+			int radius = (int)sqrt(pow(xRight - xLeft, 2) + pow(yBottom - yTop, 2));
+			Ellipse(hdc, xLeft - radius, yTop - radius, xLeft + radius, yTop + radius);
+		}
 	}
 	break;
 	
@@ -257,6 +279,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case ID_HINHHOCD_HINHTHOI:
 		case ID_HINHHOCD_TAMGIACVUONG:
 		case ID_HINHHOC_HINHCHORD:
+		case ID_HINHHOC_HINHNGUGIAC:
+		case ID_HINHHOC_HINHTRON:
 			Hinh = wmId;
 
 			break;
@@ -311,6 +335,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			break;
 
+		case ID_KIEUVIEN_DOT:
+			currentPenStyle = PS_DOT;
+
+			break;
+
+		case ID_KIEUVIEN_DASH:
+			currentPenStyle = PS_DASH;
+			break;
+		
+		case ID_KIEUVIEN_SOLID:
+			currentPenStyle = PS_SOLID;
+			break;
+
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 
@@ -346,7 +383,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	break;
 
 	case WM_DESTROY:
-		DeleteObject(nicePenWowMuchNice);
+		DeleteObject(penStyle);
 		DeleteObject(currentBrush);
 
 		PostQuitMessage(0);
